@@ -2,8 +2,6 @@
 
 A simple terminal-based task manager with a GUI-like interface using **ncurses** in C++. Features a menu bar with keyboard and mouse navigation.
 
----
-
 ## Features
 
 - **Menu bar** with `File`, `Edit`, and `Help` tabs
@@ -16,15 +14,11 @@ A simple terminal-based task manager with a GUI-like interface using **ncurses**
     - Enter to select a menu
     - `q` to quit the program
 
----
-
 ## Requirements
 
 - Linux or Unix-like OS terminal
 - `ncurses` library installed
 - C++17 compatible compiler (e.g., `g++`, `clang++`)
-
----
 
 ## Building
 
@@ -35,20 +29,15 @@ mkdir Build && cd Build
 cmake ..
 make clean all
 ```
-3. 
-
----
 
 ## Running
 
 Run the executable:
-1. Go to Build/bin dir
+1. Go to Build/bin directory
 2. Execute:
 ```
 ./MyBuddy
 ```
-
----
 
 ## Usage
 
@@ -57,15 +46,11 @@ Run the executable:
 - Click on menu items with the **left mouse button** to select them.
 - Press **`q`** to exit the application.
 
----
-
 ## Notes
 
 - Mouse support requires a terminal that supports mouse events (e.g., `xterm`, `gnome-terminal`).
 - The program currently only supports mouse clicks on the menu bar.
 
-
----
 
 ## Future Enhancements
 
@@ -75,11 +60,6 @@ Run the executable:
 - Add reminders and due dates UI
 - Implement dropdown menus
 
----
-
 ## License
 
 - Take it, break it, improve it… just don’t blame me if it explodes!"_ 💥 
-
----
-
