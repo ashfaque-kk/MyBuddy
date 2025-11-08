@@ -1,7 +1,6 @@
 # MyBuddy
 
 A simple terminal-based task manager with a GUI-like interface using **ncurses** in C++. Features a menu bar with keyboard and mouse navigation.
-this is obsedian check
 
 ---
 
@@ -80,7 +79,7 @@ Run the executable:
 
 ## License
 
-- Take it, break it, improve it… just don’t blame me if it explodes!"_ 💥 just kidding
+- Take it, break it, improve it… just don’t blame me if it explodes!"_ 💥 
 
 ---
 
