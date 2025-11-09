@@ -38,28 +38,33 @@ set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${LOCAL_BUILD_PATH}/../lib)   # static librar
 
 # Include project directories
 include_directories(
-    ${LOCAL_APP_PATH}/inc
-    ${LOCAL_CORE_PATH}/inc
+    ${LOCAL_APP_PATH}/
+    ${LOCAL_CORE_PATH}/Database/
+    ${LOCAL_CORE_PATH}/View/WIndow/
+    ${LOCAL_CORE_PATH}/View/MenuBar/
+    ${LOCAL_CORE_PATH}/View/Common/
 )
 
-# Source files for core
+# Source files for core library
 set(APP_CORE
-    ${LOCAL_CORE_PATH}/database/Database.cpp
+    ${LOCAL_CORE_PATH}/Database/Database.cpp
+   ${LOCAL_CORE_PATH}/View/MenuBar/MenuBar.cpp
+   ${LOCAL_CORE_PATH}/View/Window/Window.cpp
 )
 
 # Source files for application
 set(APP_SRC
-    ${LOCAL_APP_PATH}/src/MyBuddy.cpp
+    ${LOCAL_APP_PATH}/MyBuddy.cpp
 )
 
-# Create libAppCore library
-add_library(libAppCore STATIC ${APP_CORE})
-#target_link_libraries(libAppCore pthread rt)
+# Create MyBuddy Core library
+add_library(libMyBuddyCore STATIC ${APP_CORE})
+#target_link_libraries(libMyBuddyCore pthread rt)
 
 # Add executable
 add_executable(MyBuddy ${APP_SRC})
 # Link libraries to the executable
-target_link_libraries(MyBuddy libAppCore ${CURSES_LIBRARIES})
+target_link_libraries(MyBuddy libMyBuddyCore ${CURSES_LIBRARIES})
 
 
 
