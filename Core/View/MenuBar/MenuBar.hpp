@@ -45,7 +45,7 @@ public:
     ~MenuBar();
     
     void CreateMenuBar();
-    void DrawMenuBar();
+    void DrawMenuBar(WINDOW* menu_win, const std::vector<std::string>& menus, int highlight);
 
 private:
 

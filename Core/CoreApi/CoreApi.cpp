@@ -1,18 +1,18 @@
 /********************************************************************
-*   FILENAME       - MenuBar.cpp
+*   FILENAME       - CoreApi.cpp
 *********************************************************************
 *   CHANGE HISTORY
 *   -----------------------------------------------------------------
 *   DATE           REVISION      AUTHOR             COMMENTS
 *   -----------------------------------------------------------------
-*   Nov/09/25      0.01          Ashfaque         Initial version  
+*   Nov/10/25      0.01          Ashfaque         Initial version  
 *********************************************************************
 *  File Description
 *  ---------------------
-*  This file provide implementation to MenuBar class
+*  This file provide implementation for Core api's
 ********************************************************************
-* @file        MenuBar.cpp
-* @ingroup     UI Components
+* @file        CoreApi.cpp
+* @ingroup     Interface
 * @brief       implementation
 * @author      Ashfaque
 ********************************************************************/
@@ -20,36 +20,28 @@
 //*************************************************
 // Includes
 //*************************************************
+#include "CoreApi.hpp"
+#include "Window.hpp"
 #include "MenuBar.hpp"
 
 using namespace Mybuddy;
 
-MenuBar::MenuBar()
+CoreApi::CoreApi()
+: win(nullptr),
+  menu(nullptr)
 {
-    // Constructor implementation
+    win  = new Window();
+    menu = new MenuBar();
 }
 
-MenuBar::~MenuBar()
+CoreApi::~CoreApi()
 {
-    // Destructor implementation
+    delete win;
+    delete menu;
 }
 
-void MenuBar::CreateMenuBar()
+void CoreApi::CreateMenuBar()
 {
     // Method to create menu bar
 }
 
-void MenuBar::DrawMenuBar(WINDOW* menu_win, const std::vector<std::string>& menus, int highlight) 
-{
-    werase(menu_win);
-    box(menu_win, 0, 0);
-    int x = 2;
-    for (size_t i = 0; i < menus.size(); ++i) {
-        if ((int)i == highlight)
-            wattron(menu_win, A_REVERSE);
-        mvwprintw(menu_win, 1, x, "%s", menus[i].c_str());
-        wattroff(menu_win, A_REVERSE);
-        x += menus[i].size() + 6;
-    }
-    wrefresh(menu_win);
-}

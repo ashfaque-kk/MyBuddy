@@ -1,32 +1,36 @@
 /********************************************************************
-*   FILENAME       - Window.hpp
+*   FILENAME       - CoreApi.hpp
 *********************************************************************
 *   CHANGE HISTORY
 *   -----------------------------------------------------------------
 *   DATE           REVISION      AUTHOR             COMMENTS
 *   -----------------------------------------------------------------
-*   Nov/09/25      0.01          Ashfaque         Initial version  
+*   Nov/10/25      0.01          Ashfaque         Initial version  
 *********************************************************************
 *  File Description
 *  ---------------------
-*  This file provide interface to MenuBar class
+*  This file provide interface to core api's
 ********************************************************************
-* @file        Window.hpp
-* @ingroup     UI Components
-* @brief       Interface
+* @file        CoreApi.hpp
+* @ingroup     Interface
+* @brief       Interface for application
 * @author      Ashfaque
 ********************************************************************/
 
-#ifndef _MY_BUDDY_WINDOW_HPP__
-#define _MY_BUDDY_WINDOW_HPP__
+#ifndef _MY_BUDDY_CORE_API_HPP__
+#define _MY_BUDDY_CORE_API_HPP__
 
 //*************************************************
 // Includes
 //*************************************************
-#include "Common.hpp"
+#include "CoreApiTypes.hpp"
 
 //*************************************************
 // defines
+//*************************************************
+
+//*************************************************
+// structure
 //*************************************************
 
 //*************************************************
@@ -35,22 +39,26 @@
 
 namespace Mybuddy
 {
-
+class Window;
+class MenuBar;
 //*************************************************
 // classes
 //*************************************************
-class Window
+class CoreApi
 {
 public:
-    Window();
-    ~Window();
+    CoreApi();
+    ~CoreApi();
     
-    void CreateWindow();
-    void DrawWindow(WINDOW* task_win, const std::vector<std::string>& tasks);
+    void CreateMenuBar();
+    void CreateWindow(WinParams param);
+    void Draw();
 
 private:
+    Window* win;
+    MenuBar* menu;
 
 };
 
 }       // namespace Mybuddy
-#endif  // _MY_BUDDY_WINDOW_HPP__
+#endif  // _MY_BUDDY_CORE_API_HPP__

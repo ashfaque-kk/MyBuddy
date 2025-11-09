@@ -39,17 +39,19 @@ set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${LOCAL_BUILD_PATH}/../lib)   # static librar
 # Include project directories
 include_directories(
     ${LOCAL_APP_PATH}/
+    ${LOCAL_CORE_PATH}/CoreApi/
     ${LOCAL_CORE_PATH}/Database/
-    ${LOCAL_CORE_PATH}/View/WIndow/
+    ${LOCAL_CORE_PATH}/View/Window/
     ${LOCAL_CORE_PATH}/View/MenuBar/
     ${LOCAL_CORE_PATH}/View/Common/
 )
 
 # Source files for core library
 set(APP_CORE
+    ${LOCAL_CORE_PATH}/CoreApi/CoreApi.cpp
     ${LOCAL_CORE_PATH}/Database/Database.cpp
-   ${LOCAL_CORE_PATH}/View/MenuBar/MenuBar.cpp
-   ${LOCAL_CORE_PATH}/View/Window/Window.cpp
+    ${LOCAL_CORE_PATH}/View/MenuBar/MenuBar.cpp
+    ${LOCAL_CORE_PATH}/View/Window/Window.cpp
 )
 
 # Source files for application
