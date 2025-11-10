@@ -4,7 +4,9 @@ A simple terminal-based task manager with a GUI-like interface using **ncurses**
 
 ## Screenshot
 
-![[Pasted image 20251110164222.png]]
+![App Screenshot](Assets/Screenshot/screenshot.png)
+
+
 ## Features
 
 - **Menu bar** with `File`, `Edit`, and `Help` tabs
