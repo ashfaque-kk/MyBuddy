@@ -2,6 +2,9 @@
 
 A simple terminal-based task manager with a GUI-like interface using **ncurses** in C++. Features a menu bar with keyboard and mouse navigation.
 
+## Screenshot
+
+![[Pasted image 20251110164222.png]]
 ## Features
 
 - **Menu bar** with `File`, `Edit`, and `Help` tabs
