@@ -37,8 +37,7 @@ MenuBar::~MenuBar()
 
 void MenuBar::CreateMenuBar(MenuParams param)
 {
-    WINDOW* mMenu = newwin(param.length, param.width, 0, 0);
-    (void) mMenu;
+    mMenu = newwin(param.length, param.width, 0, 0);
 }
 
 void MenuBar::DrawMenuBar(const std::vector<std::string>& menus, int highlight) 

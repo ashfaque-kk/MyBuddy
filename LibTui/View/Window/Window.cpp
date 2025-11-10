@@ -41,8 +41,8 @@ void Window::CreateWindow(WinParams param)
     // getmaxyx(stdscr, height, width);
     // check TBD
     
-    WINDOW* mWin   = newwin(param.length - 5, param.width, 3, 0);
-    (void) mWin;
+    mWin   = newwin(param.length - 5, param.width, 3, 0);
+
 }
 
 void Window::DrawWindow(const std::vector<std::string>& tasks)

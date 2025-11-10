@@ -35,6 +35,7 @@ int main() {
     curs_set(0);            // Hide cursor
     start_color();          // Enable colors
     use_default_colors();
+    refresh();
     
     Tui mTui;
     
@@ -45,6 +46,7 @@ int main() {
     std::vector<std::string> menus = {"File", "Edit", "Help"};
     MenuParams menuparam = {3, width, 0, 0, menus};
     mTui.CreateMenuBar(menuparam);
+    
     // Create window sizes
     WinParams winparam = {1,"task_win",(height - 5U), width, 3, 0};
     mTui.CreateWindow(winparam);
@@ -55,12 +57,17 @@ int main() {
 
     mTui.Draw(vdmenu);
 
-        // Example tasks
+    // Example tasks
     std::vector<std::string> tasks = {
         "Finish project report (Due: 2025-11-10)",
         "Pay electricity bill (Due: 2025-11-08)",
         "Schedule dentist appointment"
     };
+
+    IViewData vdwin;
+    vdwin.view = View::TUI_WINDOW;
+    vdwin.data = tasks;
+    mTui.Draw(vdwin);
 
     //draw_task_window(task_win, tasks);
     //draw_status_bar(status_win, "Use ← → to navigate, Click menu | q to quit");
@@ -105,9 +112,6 @@ int main() {
                     //draw_status_bar(status_win, "Selected: " + menus[highlight]);
                 break;
         }
-
-        //draw_menu_bar(menu_win, menus, highlight);
-        //draw_task_window(task_win, tasks);
 */
     }
 
