@@ -23,28 +23,35 @@
 //*************************************************
 #include "Window.hpp"
 
-using namespace Mybuddy;
+using namespace TUI;
 
 Window::Window()
+: mWin(nullptr)
 {
-    // Constructor implementation
-}
-Window::~Window()
-{
-    // Destructor implementation
 }
 
-void Window::CreateWindow()
+Window::~Window()
 {
-    // Method to create window
+   
 }
-void Window::DrawWindow(WINDOW* task_win, const std::vector<std::string>& tasks)
+
+void Window::CreateWindow(WinParams param)
 {
-    werase(task_win);
-    box(task_win, 0, 0);
-    mvwprintw(task_win, 0, 2, " Tasks ");
+    // int height, width;
+    // getmaxyx(stdscr, height, width);
+    // check TBD
+    
+    WINDOW* mWin   = newwin(param.length - 5, param.width, 3, 0);
+    (void) mWin;
+}
+
+void Window::DrawWindow(const std::vector<std::string>& tasks)
+{
+    werase(mWin);
+    box(mWin, 0, 0);
+    mvwprintw(mWin, 0, 2, " Tasks ");
     for (size_t i = 0; i < tasks.size(); ++i) {
-        mvwprintw(task_win, i + 1, 2, "[%zu] %s", i + 1, tasks[i].c_str());
+        mvwprintw(mWin, i + 1, 2, "[%zu] %s", i + 1, tasks[i].c_str());
     }
-    wrefresh(task_win);
+    wrefresh(mWin);
 }

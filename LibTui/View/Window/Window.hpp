@@ -1,5 +1,5 @@
 /********************************************************************
-*   FILENAME       - Common.hpp
+*   FILENAME       - Window.hpp
 *********************************************************************
 *   CHANGE HISTORY
 *   -----------------------------------------------------------------
@@ -11,21 +11,20 @@
 *  ---------------------
 *  This file provide interface to MenuBar class
 ********************************************************************
-* @file        Common.hpp
+* @file        Window.hpp
 * @ingroup     UI Components
 * @brief       Interface
 * @author      Ashfaque
 ********************************************************************/
 
-#ifndef __MY_BUDDY_COMMON_HPP__
-#define __MY_BUDDY_COMMON_HPP__
+#ifndef _TUI_WINDOW_HPP__
+#define _TUI_WINDOW_HPP__
 
 //*************************************************
 // Includes
 //*************************************************
-#include <ncurses.h>
-#include <string>
-#include <vector>
+#include "Common.hpp"
+
 //*************************************************
 // defines
 //*************************************************
@@ -34,4 +33,25 @@
 // forward declarations
 //*************************************************
 
-#endif  // __MY_BUDDY_COMMON_HPP__
+namespace TUI
+{
+
+//*************************************************
+// classes
+//*************************************************
+class Window
+{
+public:
+    Window();
+    ~Window();
+    
+    void CreateWindow(WinParams param);
+    void DrawWindow(const std::vector<std::string>& tasks);
+
+private:
+    WINDOW* mWin;
+
+};
+
+}       // namespace Mybuddy
+#endif  // _TUI_WINDOW_HPP__

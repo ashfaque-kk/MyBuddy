@@ -1,64 +1,39 @@
 /********************************************************************
-*   FILENAME       - CoreApi.hpp
+*   FILENAME       - Common.hpp
 *********************************************************************
 *   CHANGE HISTORY
 *   -----------------------------------------------------------------
 *   DATE           REVISION      AUTHOR             COMMENTS
 *   -----------------------------------------------------------------
-*   Nov/10/25      0.01          Ashfaque         Initial version  
+*   Nov/09/25      0.01          Ashfaque         Initial version  
 *********************************************************************
 *  File Description
 *  ---------------------
-*  This file provide interface to core api's
+*  This file provide interface to MenuBar class
 ********************************************************************
-* @file        CoreApi.hpp
-* @ingroup     Interface
-* @brief       Interface for application
+* @file        Common.hpp
+* @ingroup     UI Components
+* @brief       Interface
 * @author      Ashfaque
 ********************************************************************/
 
-#ifndef _MY_BUDDY_CORE_API_HPP__
-#define _MY_BUDDY_CORE_API_HPP__
+#ifndef __TUI_COMMON_HPP__
+#define __TUI_COMMON_HPP__
 
 //*************************************************
 // Includes
 //*************************************************
-#include "CoreApiTypes.hpp"
+#include "TuiTypes.hpp"
 
+#include <ncurses.h>
+#include <string>
+#include <vector>
 //*************************************************
 // defines
-//*************************************************
-
-//*************************************************
-// structure
 //*************************************************
 
 //*************************************************
 // forward declarations
 //*************************************************
 
-namespace Mybuddy
-{
-class Window;
-class MenuBar;
-//*************************************************
-// classes
-//*************************************************
-class CoreApi
-{
-public:
-    CoreApi();
-    ~CoreApi();
-    
-    void CreateMenuBar();
-    void CreateWindow(WinParams param);
-    void Draw();
-
-private:
-    Window* win;
-    MenuBar* menu;
-
-};
-
-}       // namespace Mybuddy
-#endif  // _MY_BUDDY_CORE_API_HPP__
+#endif  // __TUI_COMMON_HPP__

@@ -1,5 +1,5 @@
 /********************************************************************
-*   FILENAME       - CoreApiTypes.hpp
+*   FILENAME       - TuiTypes.hpp
 *********************************************************************
 *   CHANGE HISTORY
 *   -----------------------------------------------------------------
@@ -11,20 +11,21 @@
 *  ---------------------
 *  This file provide interface to core api's
 ********************************************************************
-* @file        CoreApiTypes.hpp
+* @file        TuiTypes.hpp
 * @ingroup     Interface
 * @brief       Interface for application
 * @author      Ashfaque
 ********************************************************************/
 
-#ifndef _MY_BUDDY_API_TYPES_HPP__
-#define _MY_BUDDY_API_TYPES_HPP__
+#ifndef _TUI_TYPES_HPP__
+#define _TUI_TYPES_HPP__
 
 //*************************************************
 // Includes
 //*************************************************
-# include <iostream>
-# include <stdint.h>
+#include <iostream>
+#include <stdint.h>
+#include <vector>
 
 //*************************************************
 // defines
@@ -38,7 +39,7 @@
 // forward declarations
 //*************************************************
 
-namespace Mybuddy
+namespace TUI
 {
 
 /**
@@ -53,6 +54,13 @@ enum class Status: uint8_t
     TUI_STATUS_INVALID_PARAMS = 2,      // Bad input parameter is provided
     TUI_STATUS_UNKNOWN = 3,             // Unknown status. This should never happen. 
     TUI_STATUS_MAX
+};
+
+enum class View: uint8_t
+{
+    TUI_WINDOW = 1,
+    TUI_MENUBAR = 2,
+    TUI_VIEW_MAX
 };
 
 /*******************************************************************************
@@ -74,14 +82,36 @@ enum class Status: uint8_t
 //! \brief This structure used to pass window parameters
 struct WinParams
 {
-    // width width of the window
-    uint8_t width;
+    // Window id
+    uint8_t id;
+    // Window Name
+    std::string text;
     // length length of the window
-    uint8_t length;
+    size_t length;
+    // width width of the window
+    size_t width;
     // x_axis x position of window relative to terminal screen
-    uint8_t x_axis;
+    size_t x_axis;
     // y_axis y position of window relative to terminal screen
-    uint8_t y_axis;
+    size_t y_axis;
+
+    // WinParams()
+    // :id(0),text(""),length(0),width(0),x_axis(0),y_axis(0)
+    // {}
+};
+
+struct MenuParams
+{
+    // length length of the window
+    size_t length;
+    // width width of the window
+    size_t width;
+    // x_axis x position of window relative to terminal screen
+    size_t x_axis;
+    // y_axis y position of window relative to terminal screen
+    size_t y_axis;
+    // menu items
+    std::vector<std::string> menus;
 };
 
 //! \brief This structure used to pass menu item details
@@ -102,5 +132,11 @@ struct WinParams
 //     std::function<void()> action;
 // };
 
+struct IViewData
+{
+    View view;
+    std::vector<std::string> data;
+};
+
 } 
-#endif // _MY_BUDDY_API_TYPES_HPP__
+#endif // _TUI_TYPES_HPP__

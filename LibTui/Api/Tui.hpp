@@ -1,55 +1,63 @@
 /********************************************************************
-*   FILENAME       - MenuBar.hpp
+*   FILENAME       - Tui.hpp
 *********************************************************************
 *   CHANGE HISTORY
 *   -----------------------------------------------------------------
 *   DATE           REVISION      AUTHOR             COMMENTS
 *   -----------------------------------------------------------------
-*   Nov/09/25      0.01          Ashfaque         Initial version  
+*   Nov/10/25      0.01          Ashfaque         Initial version  
 *********************************************************************
 *  File Description
 *  ---------------------
-*  This file provide interface to MenuBar class
+*  This file provide interface to tui library
 ********************************************************************
-* @file        MenuBar.hpp
-* @ingroup     UI Components
-* @brief       Interface
+* @file        Tui.hpp
+* @ingroup     Interface
+* @brief       Interface for application
 * @author      Ashfaque
 ********************************************************************/
 
-#ifndef _MY_BUDDY_MENU_BAR_HPP__
-#define _MY_BUDDY_MENU_BAR_HPP__
+#ifndef _TUI_HPP__
+#define _TUI_HPP__
 
 //*************************************************
 // Includes
 //*************************************************
-#include "Common.hpp"
+#include "TuiTypes.hpp"
+
 //*************************************************
 // defines
+//*************************************************
+
+//*************************************************
+// structure
 //*************************************************
 
 //*************************************************
 // forward declarations
 //*************************************************
 
-namespace Mybuddy
+namespace TUI
 {
-
+class Window;
+class MenuBar;
 //*************************************************
 // classes
 //*************************************************
-class MenuBar
+class Tui
 {
 public:
-    MenuBar();
-    ~MenuBar();
+    Tui();
+    ~Tui();
     
-    void CreateMenuBar();
-    void DrawMenuBar(WINDOW* menu_win, const std::vector<std::string>& menus, int highlight);
+    void CreateMenuBar(MenuParams param);
+    void CreateWindow(WinParams param);
+    void Draw(IViewData vd);
 
 private:
-
+    Window* mWin;
+    MenuBar* mMenu;
 };
 
-}       // namespace Mybuddy
-#endif  // _MY_BUDDY_MENU_BAR_HPP__
+}       // namespace TUI
+#endif  // _TUI_HPP__

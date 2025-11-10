@@ -1,5 +1,5 @@
 /********************************************************************
-*   FILENAME       - MenuBar.cpp
+*   FILENAME       - MenuBar.hpp
 *********************************************************************
 *   CHANGE HISTORY
 *   -----------------------------------------------------------------
@@ -9,47 +9,48 @@
 *********************************************************************
 *  File Description
 *  ---------------------
-*  This file provide implementation to MenuBar class
+*  This file provide interface to MenuBar class
 ********************************************************************
-* @file        MenuBar.cpp
+* @file        MenuBar.hpp
 * @ingroup     UI Components
-* @brief       implementation
+* @brief       Interface
 * @author      Ashfaque
 ********************************************************************/
+
+#ifndef _TUI_MENU_BAR_HPP__
+#define _TUI_MENU_BAR_HPP__
 
 //*************************************************
 // Includes
 //*************************************************
-#include "MenuBar.hpp"
+#include "Common.hpp"
+//*************************************************
+// defines
+//*************************************************
 
-using namespace Mybuddy;
+//*************************************************
+// forward declarations
+//*************************************************
 
-MenuBar::MenuBar()
+namespace TUI
 {
-    // Constructor implementation
-}
 
-MenuBar::~MenuBar()
+//*************************************************
+// classes
+//*************************************************
+class MenuBar
 {
-    // Destructor implementation
-}
+public:
+    MenuBar();
+    ~MenuBar();
+    
+    void CreateMenuBar(MenuParams param);
+    void DrawMenuBar(const std::vector<std::string>& menus, int highlight);
 
-void MenuBar::CreateMenuBar()
-{
-    // Method to create menu bar
-}
+private:
+    WINDOW* mMenu;
 
-void MenuBar::DrawMenuBar(WINDOW* menu_win, const std::vector<std::string>& menus, int highlight) 
-{
-    werase(menu_win);
-    box(menu_win, 0, 0);
-    int x = 2;
-    for (size_t i = 0; i < menus.size(); ++i) {
-        if ((int)i == highlight)
-            wattron(menu_win, A_REVERSE);
-        mvwprintw(menu_win, 1, x, "%s", menus[i].c_str());
-        wattroff(menu_win, A_REVERSE);
-        x += menus[i].size() + 6;
-    }
-    wrefresh(menu_win);
-}
+};
+
+}       // namespace TUI
+#endif  // _TUI_MENU_BAR_HPP__

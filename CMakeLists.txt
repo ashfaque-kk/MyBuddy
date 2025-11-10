@@ -5,7 +5,7 @@ set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 #---------------------------------------------Compiler Flags------------------------------------------------
 # Base compiler flags
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -g -Wall -Wextra ")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -g -Wall -Wextra -Werror")
 message("Current flags: ${CMAKE_CXX_FLAGS}")
 #set(CMAKE_BUILD_TYPE Debug)
 
@@ -28,7 +28,7 @@ include_directories(${CURSES_INCLUDE_DIR})
 set(LOCAL_PATH "./")
 set(LOCAL_BUILD_PATH "${LOCAL_PATH}/Build")
 set(LOCAL_APP_PATH "${LOCAL_PATH}/App")
-set(LOCAL_CORE_PATH "${LOCAL_PATH}/Core")
+set(LOCAL_TUI_PATH "${LOCAL_PATH}/LibTui")
 
 # Set where executables go
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${LOCAL_BUILD_PATH}/../bin)
@@ -39,19 +39,19 @@ set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${LOCAL_BUILD_PATH}/../lib)   # static librar
 # Include project directories
 include_directories(
     ${LOCAL_APP_PATH}/
-    ${LOCAL_CORE_PATH}/CoreApi/
-    ${LOCAL_CORE_PATH}/Database/
-    ${LOCAL_CORE_PATH}/View/Window/
-    ${LOCAL_CORE_PATH}/View/MenuBar/
-    ${LOCAL_CORE_PATH}/View/Common/
+    ${LOCAL_TUI_PATH}/Api/
+    ${LOCAL_TUI_PATH}/Database/
+    ${LOCAL_TUI_PATH}/View/Window/
+    ${LOCAL_TUI_PATH}/View/MenuBar/
+    ${LOCAL_TUI_PATH}/View/Common/
 )
 
 # Source files for core library
 set(APP_CORE
-    ${LOCAL_CORE_PATH}/CoreApi/CoreApi.cpp
-    ${LOCAL_CORE_PATH}/Database/Database.cpp
-    ${LOCAL_CORE_PATH}/View/MenuBar/MenuBar.cpp
-    ${LOCAL_CORE_PATH}/View/Window/Window.cpp
+    ${LOCAL_TUI_PATH}/Api/Tui.cpp
+    ${LOCAL_TUI_PATH}/Database/Database.cpp
+    ${LOCAL_TUI_PATH}/View/MenuBar/MenuBar.cpp
+    ${LOCAL_TUI_PATH}/View/Window/Window.cpp
 )
 
 # Source files for application
@@ -59,14 +59,14 @@ set(APP_SRC
     ${LOCAL_APP_PATH}/MyBuddy.cpp
 )
 
-# Create MyBuddy Core library
-add_library(libMyBuddyCore STATIC ${APP_CORE})
-#target_link_libraries(libMyBuddyCore pthread rt)
+# Create libtui library
+add_library(tui STATIC ${APP_CORE})
+#target_link_libraries(tui pthread rt)
 
 # Add executable
 add_executable(MyBuddy ${APP_SRC})
 # Link libraries to the executable
-target_link_libraries(MyBuddy libMyBuddyCore ${CURSES_LIBRARIES})
+target_link_libraries(MyBuddy tui ${CURSES_LIBRARIES})
 
 
 

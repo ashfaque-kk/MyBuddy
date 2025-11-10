@@ -1,5 +1,5 @@
 /********************************************************************
-*   FILENAME       - Window.hpp
+*   FILENAME       - MenuBar.cpp
 *********************************************************************
 *   CHANGE HISTORY
 *   -----------------------------------------------------------------
@@ -9,48 +9,49 @@
 *********************************************************************
 *  File Description
 *  ---------------------
-*  This file provide interface to MenuBar class
+*  This file provide implementation to MenuBar class
 ********************************************************************
-* @file        Window.hpp
+* @file        MenuBar.cpp
 * @ingroup     UI Components
-* @brief       Interface
+* @brief       implementation
 * @author      Ashfaque
 ********************************************************************/
-
-#ifndef _MY_BUDDY_WINDOW_HPP__
-#define _MY_BUDDY_WINDOW_HPP__
 
 //*************************************************
 // Includes
 //*************************************************
-#include "Common.hpp"
+#include "MenuBar.hpp"
 
-//*************************************************
-// defines
-//*************************************************
+using namespace TUI;
 
-//*************************************************
-// forward declarations
-//*************************************************
-
-namespace Mybuddy
+MenuBar::MenuBar()
+: mMenu(nullptr)
 {
+    // Constructor implementation
+}
 
-//*************************************************
-// classes
-//*************************************************
-class Window
+MenuBar::~MenuBar()
 {
-public:
-    Window();
-    ~Window();
-    
-    void CreateWindow();
-    void DrawWindow(WINDOW* task_win, const std::vector<std::string>& tasks);
+    // Destructor implementation
+}
 
-private:
+void MenuBar::CreateMenuBar(MenuParams param)
+{
+    WINDOW* mMenu = newwin(param.length, param.width, 0, 0);
+    (void) mMenu;
+}
 
-};
-
-}       // namespace Mybuddy
-#endif  // _MY_BUDDY_WINDOW_HPP__
+void MenuBar::DrawMenuBar(const std::vector<std::string>& menus, int highlight) 
+{
+    werase(mMenu);
+    box(mMenu, 0, 0);
+    int x = 2;
+    for (size_t i = 0; i < menus.size(); ++i) {
+        if ((int)i == highlight)
+            wattron(mMenu, A_REVERSE);
+        mvwprintw(mMenu, 1, x, "%s", menus[i].c_str());
+        wattroff(mMenu, A_REVERSE);
+        x += menus[i].size() + 6;
+    }
+    wrefresh(mMenu);
+}

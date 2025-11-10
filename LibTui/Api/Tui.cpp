@@ -1,5 +1,5 @@
 /********************************************************************
-*   FILENAME       - CoreApi.cpp
+*   FILENAME       - Tui.cpp
 *********************************************************************
 *   CHANGE HISTORY
 *   -----------------------------------------------------------------
@@ -11,7 +11,7 @@
 *  ---------------------
 *  This file provide implementation for Core api's
 ********************************************************************
-* @file        CoreApi.cpp
+* @file        Tui.cpp
 * @ingroup     Interface
 * @brief       implementation
 * @author      Ashfaque
@@ -20,28 +20,53 @@
 //*************************************************
 // Includes
 //*************************************************
-#include "CoreApi.hpp"
+#include "Tui.hpp"
 #include "Window.hpp"
 #include "MenuBar.hpp"
 
-using namespace Mybuddy;
+using namespace TUI;
 
-CoreApi::CoreApi()
-: win(nullptr),
-  menu(nullptr)
+Tui::Tui()
+: mWin(nullptr),
+  mMenu(nullptr)
 {
-    win  = new Window();
-    menu = new MenuBar();
+    mWin  = new Window();
+    mMenu = new MenuBar();
 }
 
-CoreApi::~CoreApi()
+Tui::~Tui()
 {
-    delete win;
-    delete menu;
+    delete mWin;
+    delete mMenu;
 }
 
-void CoreApi::CreateMenuBar()
+void Tui::CreateMenuBar(MenuParams param)
 {
-    // Method to create menu bar
+    mMenu->CreateMenuBar(param);
+}
+
+void Tui::CreateWindow(WinParams param)
+{
+    mWin->CreateWindow(param);
+}
+
+void Tui::Draw(IViewData vd)
+{
+    switch (vd.view)
+    {
+    case View::TUI_WINDOW:
+        {
+            mWin->DrawWindow(vd.data);
+        }
+        break;
+    case View::TUI_MENUBAR:
+        {
+            mMenu->DrawMenuBar(vd.data,0);
+        }
+        break;
+    
+    default:
+        break;
+    }
 }
 
