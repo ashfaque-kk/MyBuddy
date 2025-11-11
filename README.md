@@ -1,6 +1,6 @@
 # MyBuddy
 
-A simple terminal-based task manager with a GUI-like interface using **ncurses** in C++. Features a menu bar with keyboard and mouse navigation.
+A simple terminal-based task manager with a GUI-like interface. This app is created to demonstrate how  our tui library works as well.
 
 ## Screenshot
 
@@ -9,16 +9,7 @@ A simple terminal-based task manager with a GUI-like interface using **ncurses**
 
 ## Features
 
-- **Menu bar** with `File`, `Edit`, and `Help` tabs
-- Navigate menu with **arrow keys** or **mouse clicks**
-- Task list display area
-- Status bar with instructions and feedback
-- Mouse support for menu item selection
-- Keyboard controls: 
-    - Left/Right arrows to move between menu items
-    - Enter to select a menu
-    - `q` to quit the program
-
+-  Note Down Important task [WIP]
 ## Requirements
 
 - Linux or Unix-like OS terminal
