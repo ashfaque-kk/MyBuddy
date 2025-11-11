@@ -25,6 +25,8 @@
 //*************************************************
 #include "TuiTypes.hpp"
 
+#include <thread>
+
 //*************************************************
 // defines
 //*************************************************
@@ -49,14 +51,31 @@ class Tui
 public:
     Tui();
     ~Tui();
-    
+
+    // Initialize and Terminate TUI
+    void Init();
+    void Terminate();
+    // Create Views
     void CreateMenuBar(MenuParams param);
     void CreateWindow(WinParams param);
+    // Draw Views
     void Draw(IViewData vd);
+    //UI Thread
+    void TuiService();
+    // Utils
+    void GetTerminalSize(uint8_t& height, uint8_t& width);
+    int GetMenuIndexAt(int mouse_x, const std::vector<std::string>& menus);
 
 private:
+    // View Components
     Window* mWin;
     MenuBar* mMenu;
+    uint8_t mHighlight = 0;
+    // View Data
+    IViewData mViewDataWin;
+    IViewData mViewDataMenu;
+    
+    std::thread mUIthread;
 };
 
 }       // namespace TUI

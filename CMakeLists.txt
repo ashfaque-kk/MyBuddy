@@ -61,7 +61,7 @@ set(APP_SRC
 
 # Create libtui library
 add_library(tui STATIC ${APP_CORE})
-#target_link_libraries(tui pthread rt)
+target_link_libraries(tui pthread rt)
 
 # Add executable
 add_executable(MyBuddy ${APP_SRC})
